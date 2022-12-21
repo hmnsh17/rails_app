@@ -1,0 +1,43 @@
+<%= form_with(model: author) do |form| %>
+  <% if author.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+
+      <ul>
+        <% author.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dob %>
+    <%= form.datetime_select(:dob, start_year: 1950) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.radio_button :gender, value: "Male" %>Male
+    <%= form.radio_button :gender, value: "Female" %>Female
+  </div>
+
+  <div class="field">
+    <%= form.label :jdate %>
+    <%= form.date_select :jdate %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
