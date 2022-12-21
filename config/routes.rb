@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: "books#index"
+  root to: "blogs#index"
   resources :authors
   resources :books
-  resources :authors
+  resources :blogs
 end

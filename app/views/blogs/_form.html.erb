@@ -1,0 +1,60 @@
+<%= form_with(model: blog) do |form| %>
+  <% if blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this author from being saved:</h2>
+
+      <ul>
+        <% blog.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, onfocusout: "title_empty_check()" %>
+    <span style="background: red;display: none" id="title_alert">Title can not be empty</span>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, onfocusout: "description_empty_check()" %>
+    <span style="background: red;display: none" id="description_alert">Description can not be blank</span>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+
+<% end %>
+
+
+
+<script>
+
+    function title_empty_check() {
+        console.log("I am inside title_empty_check");
+        let blog_name = document.getElementById("blog_title").value
+        if (blog_name === '') {
+            document.getElementById("title_alert").style.display = "block";
+        } else {
+            document.getElementById("title_alert").style.display = "none";
+        }
+        // alert("Name can not be empty");
+    }
+
+    function description_empty_check() {
+        console.log("I am inside desc_empty_check");
+        let desc = document.getElementById("blog_description").value
+        if (desc === '') {
+            document.getElementById("description_alert").style.display = "block";
+        } else {
+            document.getElementById("description_alert").style.display = "none"
+            // alert("Title can not be empty")
+        }
+    }
+
+
+</script>
