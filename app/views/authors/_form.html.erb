@@ -13,12 +13,14 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, onfocusout: "name_empty_check()" %>
+    <span style="background: red;display: none" id="name_alert">Name can not be empty</span>
   </div>
 
   <div class="field">
     <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.number_field :age, onfocusout: "age_empty_check()" %>
+    <span style="background: red;display: none" id="age_alert">Age can not be blank</span>
   </div>
 
   <div class="field">
@@ -28,8 +30,11 @@
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.radio_button :gender, value: "Male" %>Male
+
+    <%= form.radio_button :gender, {},  checked: "checked" %>Male
     <%= form.radio_button :gender, value: "Female" %>Female
+
+
   </div>
 
   <div class="field">
@@ -40,4 +45,34 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+
 <% end %>
+
+<script>
+
+    function name_empty_check() {
+        console.log("I am inside name_empty_check");
+        let author_name = document.getElementById("author_name").value
+        if (author_name === '') {
+            document.getElementById("name_alert").style.display = "block";
+        } else {
+            document.getElementById("name_alert").style.display = "none";
+        }
+        // alert("Name can not be empty");
+    }
+
+    function age_empty_check() {
+        console.log("I am inside age_empty_check");
+        let author_age = document.getElementById("author_age").value
+        if (author_age === '') {
+            document.getElementById("age_alert").style.display = "block";
+        } else {
+            document.getElementById("age_alert").style.display = "none"
+            // alert("Title can not be empty")
+        }
+    }
+
+
+</script>
+

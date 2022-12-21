@@ -13,20 +13,56 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, onfocusout: "name_empty_check()" %>
+    <span style="background: red;display: none" id="name_alert">Name can not be empty</span>
   </div>
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, onfocusout: "title_empty_check()" %>
+    <span style="background: red;display: none" id="title_alert">Title can not be empty</span>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, onfocusout: "description_empty_check()" %>
+    <span style="background: red;display: none" id="description_alert">Description can not be empty</span>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<script>
+    function name_empty_check() {
+        console.log("I am inside name_empty_check");
+        let book_name = document.getElementById("book_name").value
+        if (book_name === '') {
+            document.getElementById("name_alert").style.display = "block";
+        } else {
+            document.getElementById("name_alert").style.display = "none";
+        }
+        // alert("Name can not be empty");
+    }
+
+    function title_empty_check() {
+        console.log("I am inside title_empty_check");
+        let title_name = document.getElementById("book_title").value
+        if (title_name === '') {
+            document.getElementById("title_alert").style.display = "block";
+        }else{
+            document.getElementById("title_alert").style.display = "none"
+            // alert("Title can not be empty")
+        }
+    }
+
+    function description_empty_check() {
+        console.log("I am inside desc_empty_check");
+        let description_name = document.getElementById("book_description").value
+        if (description_name === '') {
+            document.getElementById("description_alert").style.display = "block";
+        }else{
+            document.getElementById("description_alert").style.display = "none";
+        }
+    }
+</script>
