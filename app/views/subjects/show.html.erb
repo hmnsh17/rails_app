@@ -7,9 +7,13 @@
 
 <p>
   <strong>Teacher Name:</strong>
-  <%= @subject.teacher.name %>
+  <%= link_to @subject.teacher.name, "/teachers/#{@subject.teacher.id}/", target: '_blank' %>
 </p>
 
+<p>
+  <strong>Student Name:</strong>
+  <%= link_to @subject.student.name, "/students/#{@subject.student.id}/", target: '_blank' %>
+</p>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>

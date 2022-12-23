@@ -22,6 +22,11 @@
     <%= form.collection_select :teacher_id, Teacher.all, :id, :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.collection_select :student_id, Student.all, :id, :name %>
+  </div>
+
 
 
   <div class="actions">
