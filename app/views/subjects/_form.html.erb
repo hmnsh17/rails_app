@@ -1,0 +1,49 @@
+<%= form_with(model: subject) do |form| %>
+  <% if subject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+
+      <ul>
+        <% subject.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, onfocusout: "name_empty_check()" %>
+    <span style="background: red;display: none" id="name_alert">Name can not be empty</span>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.collection_select :teacher_id, Teacher.all, :id, :name %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+
+<% end %>
+
+<script>
+
+    function name_empty_check() {
+        console.log("I am inside name_empty_check");
+        let subject_name = document.getElementById("subject_name").value
+        if (subject_name === '') {
+            document.getElementById("name_alert").style.display = "block";
+        } else {
+            document.getElementById("name_alert").style.display = "none";
+        }
+        // alert("Name can not be empty");
+    }
+
+
+</script>
+

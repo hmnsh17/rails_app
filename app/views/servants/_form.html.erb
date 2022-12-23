@@ -1,0 +1,27 @@
+<%= form_with(model: servant) do |form| %>
+  <% if servant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(servant.errors.count, "error") %> prohibited this servant from being saved:</h2>
+
+      <ul>
+        <% servant.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.number_field :phone %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

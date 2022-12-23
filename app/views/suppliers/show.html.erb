@@ -1,0 +1,18 @@
+<h1>Showing Supplier</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Supplier ID</th>
+    <th>Supplier Name</th>
+  </tr>
+  </thead>
+  <tbody>
+      <td><%=@supplier.id%></td>
+      <td><%=@supplier.name %></td>
+
+  </tbody>
+</table>
+<br>
+
+<%=link_to "Edit",edit_supplier_path %> |
+<%=link_to "Back",suppliers_path %>

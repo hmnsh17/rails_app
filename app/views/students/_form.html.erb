@@ -1,0 +1,59 @@
+<%= form_with(model: student) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this author from being saved:</h2>
+
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, onfocusout: "name_empty_check()" %>
+    <span style="background: red;display: none" id="name_alert">Name can not be empty</span>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age, onfocusout: "age_empty_check()" %>
+    <span style="background: red;display: none" id="age_alert">Age can not be blank</span>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+
+<% end %>
+
+<script>
+
+    function name_empty_check() {
+        console.log("I am inside name_empty_check");
+        let student_name = document.getElementById("student_name").value
+        if (student_name === '') {
+            document.getElementById("name_alert").style.display = "block";
+        } else {
+            document.getElementById("name_alert").style.display = "none";
+        }
+        // alert("Name can not be empty");
+    }
+
+    function age_empty_check() {
+        console.log("I am inside age_empty_check");
+        let student_age = document.getElementById("student_age").value
+        if (student_age === '') {
+            document.getElementById("age_alert").style.display = "block";
+        } else {
+            document.getElementById("age_alert").style.display = "none"
+            // alert("Title can not be empty")
+        }
+    }
+
+
+</script>
+

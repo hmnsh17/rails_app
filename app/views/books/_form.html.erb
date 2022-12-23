@@ -29,6 +29,11 @@
     <span style="background: red;display: none" id="description_alert">Description can not be empty</span>
   </div>
 
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.collection_select :author_id, Author.all, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
